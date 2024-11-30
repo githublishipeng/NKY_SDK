@@ -1,4 +1,4 @@
-package com.nky.protocal.util;
+package com.nky.sdk_flutter.nkysdk.protocal.src.main.java.com.nky.protocal.util;
 
 import java.util.Arrays;
 

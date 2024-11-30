@@ -1,4 +1,4 @@
-package com.nky.protocal;
+package com.nky.sdk_flutter.nkysdk.protocal.src.test.java.com.nky.protocal;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.nky.protocal.modbus;
+package com.nky.sdk_flutter.nkysdk.protocal.src.main.java.com.nky.protocal.modbus;
 
 import com.nky.protocal.util.ByteUtils;
 import com.nky.protocal.util.CRC16Util;

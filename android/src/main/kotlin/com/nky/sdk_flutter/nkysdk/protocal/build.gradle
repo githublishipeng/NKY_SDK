@@ -1,3 +1,5 @@
+package com.nky.sdk_flutter.nkysdk.protocal
+
 apply plugin: 'com.android.library'
 
 android {

@@ -1,4 +1,4 @@
-package com.nky.protocal.version6;
+package com.nky.sdk_flutter.nkysdk.protocal.src.main.java.com.nky.protocal.version6;
 
 
 import com.nky.protocal.util.AESCBCUtil;

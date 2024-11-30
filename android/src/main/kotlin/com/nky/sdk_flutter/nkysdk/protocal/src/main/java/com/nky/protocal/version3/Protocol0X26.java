@@ -1,4 +1,4 @@
-package com.nky.protocal.version3;
+package com.nky.sdk_flutter.nkysdk.protocal.src.main.java.com.nky.protocal.version3;
 
 
 import com.nky.protocal.util.ByteUtils;

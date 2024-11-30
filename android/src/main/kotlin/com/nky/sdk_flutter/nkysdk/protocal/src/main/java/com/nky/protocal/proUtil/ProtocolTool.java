@@ -1,4 +1,4 @@
-package com.nky.protocal.proUtil;
+package com.nky.sdk_flutter.nkysdk.protocal.src.main.java.com.nky.protocal.proUtil;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;

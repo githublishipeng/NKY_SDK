@@ -1,4 +1,4 @@
-package com.nky.protocal;
+package com.nky.sdk_flutter.nkysdk.protocal.src.androidTest.java.com.nky.protocal;
 
 import android.content.Context;
 
