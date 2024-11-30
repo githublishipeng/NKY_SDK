@@ -5,9 +5,9 @@ buildscript {
     ext.kotlin_version = "1.7.10"
     repositories {
         google()
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
         mavenCentral()
     }
 
@@ -20,9 +20,9 @@ buildscript {
 allprojects {
     repositories {
         google()
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/jcenter' }
-        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+//        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
         mavenCentral()
     }
 }
@@ -71,4 +71,8 @@ android {
             }
         }
     }
+}
+dependencies {
+    implementation 'com.alibaba:fastjson:1.2.75'
+//    implementation files('libs\\protocal-release.aar')
 }
