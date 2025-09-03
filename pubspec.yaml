@@ -5,7 +5,7 @@ Author: 814505909@qq.com
 homepage: https://github.com/githublishipeng/NKY_SDK.git
 
 environment:
-#  sdk: ^3.5.4
+  sdk: ^3.3.1
   flutter: '>=3.3.0'
 
 dependencies:
