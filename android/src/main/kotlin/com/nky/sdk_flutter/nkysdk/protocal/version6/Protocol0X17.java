@@ -2,6 +2,7 @@ package com.nky.sdk_flutter.nkysdk.protocal.version6;
 
 
 
+
 import com.nky.sdk_flutter.nkysdk.protocal.modbus.Modbus;
 import com.nky.sdk_flutter.nkysdk.protocal.modbus.Modbus06;
 import com.nky.sdk_flutter.nkysdk.protocal.modbus.ModbusRead;
@@ -24,32 +25,32 @@ public class Protocol0X17 extends Protocol {
      * 03功能码：holding
      * 读取一个寄存器值
      */
-    public static Protocol0X17 newInstanceFor0X03(int registerAddress) {
-        return newInstanceFor0X03(registerAddress, 1);
+    public static Protocol0X17 newInstanceFor0X03(int registerAddress,byte protocolVersion) {
+        return newInstanceFor0X03(registerAddress, 1,protocolVersion);
     }
 
     /**
      * 04功能码：input
      * 读取一个寄存器值
      */
-    public static Protocol0X17 newInstanceFor0X04(int registerAddress) {
-        return newInstanceFor0X04(registerAddress, 1);
+    public static Protocol0X17 newInstanceFor0X04(int registerAddress,byte protocolVersion) {
+        return newInstanceFor0X04(registerAddress, 1,protocolVersion);
     }
 
     /**
      * 03功能码：holding
      * 读取多个连续地址寄存器的值
      */
-    public static Protocol0X17 newInstanceFor0X03(int registerAddress, int count) {
-        return newInstanceForRead(0X03, registerAddress, count);
+    public static Protocol0X17 newInstanceFor0X03(int registerAddress, int count,byte protocolVersion) {
+        return newInstanceForRead(0X03, registerAddress, count,protocolVersion);
     }
 
     /**
      * 04功能码：input
      * 读取多个连续地址寄存器的值
      */
-    public static Protocol0X17 newInstanceFor0X04(int registerAddress, int count) {
-        return newInstanceForRead(0X04, registerAddress, count);
+    public static Protocol0X17 newInstanceFor0X04(int registerAddress, int count,byte protocolVersion) {
+        return newInstanceForRead(0X04, registerAddress, count,protocolVersion);
     }
 
     /**
@@ -57,9 +58,9 @@ public class Protocol0X17 extends Protocol {
      * @param startRegisterAddress 开始寄存器地址
      * @param count                数据读取个数
      */
-    private static Protocol0X17 newInstanceForRead(int functionCode, int startRegisterAddress, int count) {
+    private static Protocol0X17 newInstanceForRead(int functionCode, int startRegisterAddress, int count, byte protocolVersion) {
         ModbusRead modbusRead = ModbusRead.newInstance(functionCode, startRegisterAddress, count);
-        return newInstance(modbusRead.getBytes());
+        return newInstance(modbusRead.getBytes(),protocolVersion);
     }
 
     /**
@@ -70,7 +71,7 @@ public class Protocol0X17 extends Protocol {
      */
     public static Protocol0X17 newInstanceForSet(int startRegisterAddress, byte[] _setValues) {
         ModbusSet modbusSet = ModbusSet.newInstance(startRegisterAddress, _setValues);
-        return newInstance(modbusSet.getBytes());
+        return newInstance(modbusSet.getBytes(),(byte) 0x06);
     }
 
 
@@ -83,14 +84,17 @@ public class Protocol0X17 extends Protocol {
      */
     public static Protocol0X17 newInstanceForSet06(int startRegisterAddress, byte[] _setValues) {
         Modbus06 modbusSet = Modbus06.newInstance(startRegisterAddress, _setValues);
-        return newInstance(modbusSet.getBytes());
+        return newInstance(modbusSet.getBytes(), (byte) 0x06);
     }
 
     /**
      * @param _modbusData 透传数据区数据，即modbus数据
      */
-    private static Protocol0X17 newInstance(byte[] _modbusData) {
+    private static Protocol0X17 newInstance(byte[] _modbusData,byte protocolVersion) {
         Protocol0X17 protocol = new Protocol0X17();
+        protocol._protocolVersion= new byte[]{0x00, protocolVersion};
+
+
         protocol._modbusData = _modbusData;
         protocol._modbusDataLength = ByteUtils.intTo2Byte(protocol._modbusData.length);
 

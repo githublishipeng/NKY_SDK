@@ -26,8 +26,10 @@ class NkysdkPlugin: FlutterPlugin, MethodCallHandler {
         "getPlatformVersion" -> result.success("Android ${android.os.Build.VERSION.RELEASE}")
         "setDatalogerByP0x18" -> setDatalogerByP0x18(call.arguments as HashMap<String, Any>, result)
         "parserPro0x18" -> parserPro0x18(call.arguments as ByteArray, result)
-        "setDatalogerByP0x19" -> getDatalogerByP0x19(call.arguments as HashMap<String, Any>, result)
+        "getDatalogerByP0x19" -> getDatalogerByP0x19(call.arguments as HashMap<String, Any>, result)
         "parserPro0x19" -> parserPro0x19(call.arguments as ByteArray, result)
+
+//        "setDatalogerByP0x17" -> setDatalogerByP0x17(call.arguments as HashMap<String,Any>,result)
         else -> result.notImplemented()
       }
     } catch (e: Exception) {
@@ -70,6 +72,14 @@ class NkysdkPlugin: FlutterPlugin, MethodCallHandler {
       res.success(ddData)
     }
   }
+
+//  private fun setDatalogerByP0x17(msg:HashMap<String,Any>,res:Result){
+//    ProtocolTool.getDatalogerByP0x19(JSONObject(map)) {
+//      res.success(it)
+//    }
+//  }
+
+
 
   private fun ByteArray.toIntList(): List<Int> {
     val list = mutableListOf<Int>()

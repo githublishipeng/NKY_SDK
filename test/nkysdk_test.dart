@@ -36,6 +36,12 @@ class MockNkysdkPlatform
     // TODO: implement setDatalogerByP0x19
     throw UnimplementedError();
   }
+
+  @override
+  Future setDatalogerByP0x17(Map<String, dynamic> map) {
+    // TODO: implement setDatalogerByP0x17
+    throw UnimplementedError();
+  }
 }
 
 void main() {

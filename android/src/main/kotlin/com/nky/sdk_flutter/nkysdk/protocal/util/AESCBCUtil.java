@@ -12,8 +12,8 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class AESCBCUtil {
 
-    private static final String SECRET_KEY = "sxd_aiot_key_001";//
-    private static final String iv = "sxd_aiot_2022_01";//偏移量字符串16位 当模式是CBC的时候必须设置偏移量
+    public static String SECRET_KEY = "sxd_aiot_key_001";//
+    public static  String iv = "sxd_aiot_2022_01";//偏移量字符串16位 当模式是CBC的时候必须设置偏移量
     private static final String Algorithm = "AES";
     private static final String AlgorithmProvider = "AES/CBC/NoPadding"; //算法/模式/补码方式
 

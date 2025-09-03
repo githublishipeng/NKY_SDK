@@ -24,14 +24,18 @@ public class Protocol0X18 extends Protocol {
     public static Protocol0X18 newInstance(int paramNo, String value) {
         List<Param> paramList = new ArrayList<>();
         paramList.add(Param.newInstance(paramNo, value));
-        return newInstance(paramList);
+        return newInstance(paramList, (byte) 0x06);
     }
 
     /**
      * 设置多个参数
      */
-    public static Protocol0X18 newInstance(@NonNull List<Param> paramList) {
+    public static Protocol0X18 newInstance(@NonNull List<Param> paramList,byte protocolVersion) {
         Protocol0X18 protocol = new Protocol0X18();
+
+
+        protocol._protocolVersion= new byte[]{0x00, protocolVersion};
+
         //设置数据长度
         protocol.paramsLength = 0;
         for (Param param : paramList) {

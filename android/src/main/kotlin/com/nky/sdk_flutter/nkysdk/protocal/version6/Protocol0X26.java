@@ -127,6 +127,19 @@ public class Protocol0X26 extends Protocol {
         public int getStatus() {
             return status;
         }
+
+
+        public void setFileTotalCount(int fileTotalCount) {
+            this.fileTotalCount = fileTotalCount;
+        }
+
+        public void setCurrentPackageNo(int currentPackageNo) {
+            this.currentPackageNo = currentPackageNo;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
     }
 
 }

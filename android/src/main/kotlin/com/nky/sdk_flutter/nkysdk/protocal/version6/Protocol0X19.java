@@ -23,14 +23,15 @@ public class Protocol0X19 extends Protocol {
      * 读取一个编号数据
      */
     public static Protocol0X19 newInstance(int paramNo) {
-        return newInstance(new int[]{paramNo});
+        return newInstance(new int[]{paramNo}, (byte) 0x06);
     }
 
     /**
      * 读取多个编号数据
      */
-    public static Protocol0X19 newInstance(int[] paramNos) {
+    public static Protocol0X19 newInstance(int[] paramNos,byte protocolVersion) {
         Protocol0X19 protocol = new Protocol0X19();
+        protocol._protocolVersion= new byte[]{0x00, protocolVersion};
         //参数编号个数(既参数个数)
         protocol.paramNoCount = paramNos.length;
         protocol._paramNoCount = ByteUtils.intTo2Byte(protocol.paramNoCount);

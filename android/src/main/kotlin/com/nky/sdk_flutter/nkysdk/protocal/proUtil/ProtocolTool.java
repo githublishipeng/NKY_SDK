@@ -3,9 +3,11 @@ package com.nky.sdk_flutter.nkysdk.protocal.proUtil;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.nky.sdk_flutter.nkysdk.protocal.Param;
-import com.nky.sdk_flutter.nkysdk.protocal.ProtocolCallback;
+import com.nky.sdk_flutter.nkysdk.protocal.unimodule.ProtocalCallback;
+import com.nky.sdk_flutter.nkysdk.protocal.util.AESCBCUtil;
 import com.nky.sdk_flutter.nkysdk.protocal.version6.Protocol0X18;
 import com.nky.sdk_flutter.nkysdk.protocal.version6.Protocol0X19;
+import com.nky.sdk_flutter.nkysdk.protocal.version6.Protocol0X26;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +20,28 @@ public class ProtocolTool {
      * @param options 设置18命令参数
      * @param callback 回调
      */
-    public static void setDatalogerByP0x18(JSONObject options, ProtocolCallback callback) {
+    public static void setDatalogerByP0x18(JSONObject options, ProtocalCallback callback) {
         List<Param> paramList = new ArrayList<>();
         JSONArray param18Obj = options.getJSONArray("param18Obj");
         for (int i = 0; i < param18Obj.size(); i++) {
             JSONObject jsonObject = param18Obj.getJSONObject(i);
             paramList.add(Param.newInstance(jsonObject.getIntValue("paramId"), jsonObject.getString("param")));
         }
-        Protocol0X18 protocol0X18 = Protocol0X18.newInstance(paramList);
+
+        //设置AES密钥
+        String aesKey = options.getString("AESKey");
+        String aeSive = options.getString("AESive");
+        String protocol = options.getString("protocol");
+        String key = options.getString("key");
+        if (aesKey!=null){
+            AESCBCUtil.SECRET_KEY  = aesKey;
+        }
+        if (aeSive!=null){
+            AESCBCUtil.iv = aeSive;
+        }
+
+
+        Protocol0X18 protocol0X18 = Protocol0X18.newInstance(paramList,Byte.parseByte(protocol));
         callback.invoke(protocol0X18.getBytes());
 
     }
@@ -33,7 +49,7 @@ public class ProtocolTool {
 
 
 
-    public static void parserPro0x18(byte[] bytes, ProtocolCallback callback) {
+    public static void parserPro0x18(byte[] bytes, ProtocalCallback callback) {
 
         callback.invoke(Protocol0X18.isSetSuccess(bytes));
 
@@ -44,25 +60,41 @@ public class ProtocolTool {
 
 
 
-    public static void getDatalogerByP0x19(JSONObject options, ProtocolCallback callback) {
+    public static void getDatalogerByP0x19(JSONObject options, ProtocalCallback callback) {
         JSONArray param19Obj = options.getJSONArray("param19Obj");
         int[] params=new int[param19Obj.size()];
         for (int i = 0; i < param19Obj.size(); i++) {
             params[i]= param19Obj.getIntValue(i);
         }
-        byte[] data = Protocol0X19.newInstance(params).getBytes();
+
+        //设置AES密钥
+        String aesKey = options.getString("AESKey");
+        String aeSive = options.getString("AESive");
+        String protocol = options.getString("protocol");
+        String key = options.getString("key");
+        if (aesKey!=null){
+            AESCBCUtil.SECRET_KEY  = aesKey;
+        }
+        if (aeSive!=null){
+            AESCBCUtil.iv = aeSive;
+        }
+
+        byte[] data = Protocol0X19.newInstance(params,Byte.parseByte(protocol)).getBytes();
         callback.invoke(data);
     }
 
 
 
-    public static void parserPro0x19(byte[] bytes, ProtocolCallback callback) {
+    public static void parserPro0x19(byte[] bytes, ProtocalCallback callback) {
         List<Param> paramList = Protocol0X19.readParams(bytes);
         callback.invoke(paramList);
 
     }
 
-
+    public static void parserPro0x26(byte[] bytes, ProtocalCallback callback) {
+        Protocol0X26.Result parse = Protocol0X26.parse(bytes);
+        callback.invoke(parse);
+    }
 
 
     /**

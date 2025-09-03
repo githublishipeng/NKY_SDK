@@ -1,5 +1,7 @@
 package com.nky.sdk_flutter.nkysdk.protocal.util;
 
+import android.util.Log;
+
 import java.nio.charset.StandardCharsets;
 
 public class ByteUtils {
@@ -74,6 +76,38 @@ public class ByteUtils {
     }
 
 
+
+    /**
+     * int转长度为2的字节数组
+     */
+    public static byte[] longTo2Byte(long i) {
+        byte[] b = new byte[2];
+
+        b[0] = (byte) (i >> 8);
+        b[1] = (byte) (i);
+
+        return b;
+    }
+
+
+
+
+
+
+
+    public static byte[] longToBytes4(long value) {
+        // 1. 先将long强转为int，这会自动截取低32位
+        // 2. 然后将这个int型数据放入4字节的数组
+        int intValue = (int) (value & 0xFFFFFFFFL); // 确保只取低32位
+        byte[] result = new byte[4];
+        result[0] = (byte) (intValue >> 24); // 取最高位字节（原long的低32位中的高8位）
+        result[1] = (byte) (intValue >> 16);
+        result[2] = (byte) (intValue >> 8);
+        result[3] = (byte) (intValue);       // 取最低位字节
+        return result;
+    }
+
+
     /**
      * int转16进制字符串,得出来的字符串长度为2或者4，不够前面补0
      * 示例：
@@ -141,6 +175,19 @@ public class ByteUtils {
         }
         return (long) (bs[0] & 0xFF) << 24 | (bs[1] & 0xFF) << 16 | (bs[2] & 0xFF) << 8 | (bs[3] & 0xFF);
     }
+
+
+    /**
+     * 长度为4byte数组转无符号int
+     */
+    public static int convert4BytesToUnsignedInt(byte[] bs) {
+        if (bs == null || bs.length != 4) {
+            return 0;
+        }
+        return (int) (bs[0] & 0xFF) << 24 | (bs[1] & 0xFF) << 16 | (bs[2] & 0xFF) << 8 | (bs[3] & 0xFF);
+    }
+
+
 
     /**
      * 2个字节转有符号int

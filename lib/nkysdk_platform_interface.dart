@@ -36,4 +36,6 @@ abstract class NkysdkPlatform extends PlatformInterface {
   Future<List<int>?> setDatalogerByP0x19(Map<String, dynamic> map);
 
   Future<dynamic> parserPro0x19(Uint8List hex);
+
+  Future<dynamic> setDatalogerByP0x17(Map<String, dynamic> map);
 }

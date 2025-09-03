@@ -20,7 +20,7 @@ class MethodChannelNkysdk extends NkysdkPlatform {
       if (Platform.isAndroid) {
         return (await methodChannel.invokeMethod('setDatalogerByP0x18', map)) as List<int>;
       } else {
-        var back = (await methodChannel.invokeMapMethod("enCodeWithParams", map));
+        var back = (await methodChannel.invokeMapMethod("enCode19Or18WithParams", map));
         return back?["data"] as List<int>;
       }
     } catch (e) {
@@ -35,7 +35,7 @@ class MethodChannelNkysdk extends NkysdkPlatform {
       if (Platform.isAndroid) {
         return await methodChannel.invokeMethod('parserPro0x18', bytes);
       } else {
-        var back = (await methodChannel.invokeMapMethod("DeCodeWithInputData", bytes));
+        var back = (await methodChannel.invokeMapMethod("deCodeWithParams", bytes));
         return back;
       }
     } catch (e) {
@@ -48,9 +48,9 @@ class MethodChannelNkysdk extends NkysdkPlatform {
   Future<List<int>?> setDatalogerByP0x19(Map<String, dynamic> map) async {
     try {
       if (Platform.isAndroid) {
-        return (await methodChannel.invokeMethod('setDatalogerByP0x19', map)) as List<int>;
+        return (await methodChannel.invokeMethod('getDatalogerByP0x19', map)) as List<int>;
       } else {
-        var back = (await methodChannel.invokeMapMethod("enCodeWithParams", map));
+        var back = (await methodChannel.invokeMapMethod("enCode19Or18WithParams", map));
         return back?["data"] as List<int>;
       }
     } catch (e) {
@@ -64,11 +64,25 @@ class MethodChannelNkysdk extends NkysdkPlatform {
       if (Platform.isAndroid) {
         return await methodChannel.invokeMethod('parserPro0x19', bytes);
       } else {
-        var back = (await methodChannel.invokeMapMethod("DeCodeWithInputData", bytes));
+        var back = (await methodChannel.invokeMapMethod("deCodeWithParams", bytes));
         return back;
       }
     } catch (e) {
       // print("e:$e");
+      return null;
+    }
+  }
+
+  @override
+  Future setDatalogerByP0x17(Map<String, dynamic> map) async{
+    try{
+      if (Platform.isAndroid) {
+        return await methodChannel.invokeMethod('setDatalogerByP0x17', map);
+      } else {
+        var back = (await methodChannel.invokeMapMethod("setDatalogerByP0x17", map));
+        return back;
+      }
+    }catch(e){
       return null;
     }
   }
