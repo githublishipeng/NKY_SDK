@@ -21,7 +21,7 @@
     //                 result(encryptionDataDic);
     //             }
     //    ];
-    } else if([@"enCode19Or18WithParams" isEqualToString :call.method]){
+  } else if([@"enCode19Or18WithParams" isEqualToString :call.method]){
               [
                   [AECCSetnetManager sharedInstance] enCode19Or18WithParams:call.arguments
                       block:^(NSDictionary * _Nonnull encryptionDataDic)
@@ -29,7 +29,7 @@
                           result(encryptionDataDic);
                       }
               ];
-    } else if([@"deCodeWithParams" isEqualToString:call.method]){
+  } else if([@"deCodeWithParams" isEqualToString:call.method]){
         FlutterStandardTypedData *typedData = call.arguments;
         NSData *ttdata = typedData.data;
         [
@@ -39,17 +39,14 @@
                 result(decryptDataDic);
             }
         ];
-    }
-    //新加方法
-    else if([@"encode17WithPatams" isEqualToString :call.method]){
+  } else if([@"encode17WithPatams" isEqualToString :call.method]){
         [
             [AECCSetnetManager sharedInstance] encode17WithPatams:call.arguments
              callback:^(NSDictionary * _Nonnull encryptionDataDic) {
                   result(encryptionDataDic);
              }
          ];
-    }
-     else {
+  } else {
     result(FlutterMethodNotImplemented);
   }
 }
