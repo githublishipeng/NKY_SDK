@@ -1,6 +1,0 @@
-framework module AECC_Setnet_SDK {
-  umbrella header "AECC_Setnet_SDK.h"
-  export *
-
-  module * { export * }
-}
