@@ -3,7 +3,7 @@ package com.nky.sdk_flutter.nkysdk.protocal.version3;
 
 
 import com.nky.sdk_flutter.nkysdk.protocal.Param;
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,7 +78,7 @@ public class Protocol0X19 extends Protocol {
 
     public static List<Param> readParams(byte[] response) {
         List<Param> params = new ArrayList<>();
-        byte[] dataArea = getDataArea(response);
+        byte[] dataArea = Protocol.getDataArea(response);
         int statusCode = dataArea[ProtocolConstant.DATA_LOGGING_SN_LENGTH + ProtocolConstant.PARAM_NO_COUNT_LENGTH];
         if (statusCode == ProtocolConstant.STATUS_CODE_SUCCESS) {
             //数据长度

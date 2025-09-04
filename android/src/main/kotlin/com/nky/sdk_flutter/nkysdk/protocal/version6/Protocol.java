@@ -2,8 +2,8 @@ package com.nky.sdk_flutter.nkysdk.protocal.version6;
 
 
 import com.nky.sdk_flutter.nkysdk.protocal.IProtocol;
-import com.shuoxinda.bluetooth.protocal.util.AESCBCUtil;
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.AESCBCUtil;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
 
 /**
  * 数服协议基础类，由这几部分组成

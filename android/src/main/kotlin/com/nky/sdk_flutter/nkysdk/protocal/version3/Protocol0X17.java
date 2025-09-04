@@ -2,12 +2,12 @@ package com.nky.sdk_flutter.nkysdk.protocal.version3;
 
 
 
-import com.shuoxinda.bluetooth.protocal.modbus.Modbus;
-import com.shuoxinda.bluetooth.protocal.modbus.Modbus06;
-import com.shuoxinda.bluetooth.protocal.modbus.ModbusRead;
-import com.shuoxinda.bluetooth.protocal.modbus.ModbusSet;
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
-import com.shuoxinda.bluetooth.protocal.util.CRC16Util;
+import com.nky.sdk_flutter.nkysdk.protocal.modbus.Modbus;
+import com.nky.sdk_flutter.nkysdk.protocal.modbus.Modbus06;
+import com.nky.sdk_flutter.nkysdk.protocal.modbus.ModbusRead;
+import com.nky.sdk_flutter.nkysdk.protocal.modbus.ModbusSet;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.CRC16Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -140,7 +140,7 @@ public class Protocol0X17 extends Protocol {
      * @return modbus数据, null代表错误响应，否则是正确响应
      */
     public static byte[] getModbusData(byte[] rawResponse) {
-        byte[] dataArea = getDataArea(rawResponse);
+        byte[] dataArea = Protocol.getDataArea(rawResponse);
         byte[] _modbusDataLength = new byte[MODBUS_DATA_LENGTH];
         System.arraycopy(dataArea, ProtocolConstant.DATA_LOGGING_SN_LENGTH, _modbusDataLength, 0, _modbusDataLength.length);
         int modbusDataLength = ByteUtils.convert2BytesToUnsignedInt(_modbusDataLength);

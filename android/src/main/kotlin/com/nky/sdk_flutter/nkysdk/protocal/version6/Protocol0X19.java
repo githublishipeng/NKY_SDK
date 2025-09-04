@@ -5,9 +5,9 @@ package com.nky.sdk_flutter.nkysdk.protocal.version6;
 import android.util.Log;
 
 import com.nky.sdk_flutter.nkysdk.protocal.Param;
-import com.shuoxinda.bluetooth.protocal.util.AESCBCUtil;
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
-import com.shuoxinda.bluetooth.protocal.util.CRC16Util;
+import com.nky.sdk_flutter.nkysdk.protocal.util.AESCBCUtil;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.CRC16Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +99,7 @@ public class Protocol0X19 extends Protocol {
     public static List<Param> readParams(byte[] response) {
         List<Param> params = new ArrayList<>();
         if (isDataResponseSuccess(response)) {
-            byte[] dataArea = getDecodeDataArea(response);
+            byte[] dataArea = Protocol.getDecodeDataArea(response);
 
             Log.d("liaojinsha","解密后的数据："+ByteUtils.bytesToHexString(dataArea));
             //数据长度
@@ -153,7 +153,7 @@ public class Protocol0X19 extends Protocol {
      */
     public static boolean isDataResponseSuccess(byte[] response) {
         if (CRC16Util.crc16Verify(response)) {
-            byte[] dataArea = getDecodeDataArea(response);
+            byte[] dataArea = Protocol.getDecodeDataArea(response);
             int statusCode = dataArea[ProtocolConstant.DATA_LOGGING_SN_LENGTH + ProtocolConstant.PARAM_NO_COUNT_LENGTH];
             return statusCode == Protocol.ProtocolConstant.STATUS_CODE_SUCCESS;
         }

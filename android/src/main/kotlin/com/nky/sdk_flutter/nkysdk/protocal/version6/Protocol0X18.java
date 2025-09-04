@@ -4,9 +4,9 @@ import androidx.annotation.NonNull;
 
 
 import com.nky.sdk_flutter.nkysdk.protocal.Param;
-import com.shuoxinda.bluetooth.protocal.util.AESCBCUtil;
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
-import com.shuoxinda.bluetooth.protocal.util.CRC16Util;
+import com.nky.sdk_flutter.nkysdk.protocal.util.AESCBCUtil;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.CRC16Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,7 +110,7 @@ public class Protocol0X18 extends Protocol {
      */
     public static boolean isSetSuccess(byte[] response) {
         if(CRC16Util.crc16Verify(response)){
-            byte[] dataArea = getDecodeDataArea(response);
+            byte[] dataArea = Protocol.getDecodeDataArea(response);
             int statusCode = dataArea[ProtocolConstant.DATA_LOGGING_SN_LENGTH + ProtocolConstant.PARAM_NO_COUNT_LENGTH];
             return statusCode == ProtocolConstant.STATUS_CODE_SUCCESS;
         }

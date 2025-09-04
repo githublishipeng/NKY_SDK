@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 
 import com.nky.sdk_flutter.nkysdk.protocal.Param;
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +88,7 @@ public class Protocol0X18 extends Protocol {
      * 是否设置成功
      */
     public static boolean isSetSuccess(byte[] response) {
-        byte[] dataArea = getDataArea(response);
+        byte[] dataArea = Protocol.getDataArea(response);
         int statusCode = dataArea[ProtocolConstant.DATA_LOGGING_SN_LENGTH + ProtocolConstant.PARAM_NO_COUNT_LENGTH];
         return statusCode == ProtocolConstant.STATUS_CODE_SUCCESS;
     }

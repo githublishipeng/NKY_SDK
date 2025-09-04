@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.nky.sdk_flutter.nkysdk.protocal.Param;
 import com.nky.sdk_flutter.nkysdk.protocal.unimodule.ProtocolCallback;
-import com.shuoxinda.bluetooth.protocal.util.AESCBCUtil;
+import com.nky.sdk_flutter.nkysdk.protocal.util.AESCBCUtil;
 import com.nky.sdk_flutter.nkysdk.protocal.version6.Protocol0X18;
 import com.nky.sdk_flutter.nkysdk.protocal.version6.Protocol0X19;
 import com.nky.sdk_flutter.nkysdk.protocal.version7.Protocol0X26;

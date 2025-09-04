@@ -1,7 +1,7 @@
 package com.nky.sdk_flutter.nkysdk.protocal.modbus;
 
 
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
 
 /**
  * Modbus协议基类

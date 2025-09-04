@@ -1,7 +1,7 @@
 package com.nky.sdk_flutter.nkysdk.protocal.modbus;
 
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
-import com.shuoxinda.bluetooth.protocal.util.CRC16Util;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.CRC16Util;
 
 public class Modbus06 extends Modbus {
 

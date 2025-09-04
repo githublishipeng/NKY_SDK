@@ -1,6 +1,6 @@
 package com.nky.sdk_flutter.nkysdk.protocal;
 
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
 
 /**
  * 数服协议基类

@@ -1,9 +1,9 @@
 package com.nky.sdk_flutter.nkysdk.protocal.version6;
 
 
-import com.shuoxinda.bluetooth.protocal.util.AESCBCUtil;
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
-import com.shuoxinda.bluetooth.protocal.util.CRC16Util;
+import com.nky.sdk_flutter.nkysdk.protocal.util.AESCBCUtil;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.util.CRC16Util;
 
 /**
  * 0X26命令，下发文件进行升级
@@ -86,7 +86,7 @@ public class Protocol0X26 extends Protocol {
      * 获取结果
      */
     public static Result parse(byte[] response) {
-        byte[] dataArea = getDecodeDataArea(response);
+        byte[] dataArea = Protocol.getDecodeDataArea(response);
         byte[] result = new byte[5];
         System.arraycopy(dataArea, ProtocolConstant.DATA_LOGGING_SN_LENGTH, result, 0, 2 + 2 + 1);
         int fileTotalCount = ByteUtils.convert2BytesToUnsignedInt(new byte[]{result[0], result[1]});

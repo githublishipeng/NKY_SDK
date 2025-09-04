@@ -3,8 +3,8 @@ package com.nky.sdk_flutter.nkysdk.protocal;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.shuoxinda.bluetooth.protocal.util.ByteUtils;
-import com.shuoxinda.bluetooth.protocal.version6.Protocol;
+import com.nky.sdk_flutter.nkysdk.protocal.util.ByteUtils;
+import com.nky.sdk_flutter.nkysdk.protocal.version6.Protocol;
 
 import java.util.ArrayList;
 import java.util.List;
