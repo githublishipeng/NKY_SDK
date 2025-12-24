@@ -1,1 +1,37 @@
+name: Publish to pub.dev
 
+on:
+  workflow_dispatch:  # 手动触发
+  push:
+    tags:
+      - 'v*'  # 当推送版本标签时自动发布
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.5'
+          channel: 'stable'
+      
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Validate package
+        run: flutter pub publish --dry-run
+      
+      - name: Setup pub.dev token
+        run: |
+          mkdir -p ~/.config/dart
+          echo '{"version":1,"hosted":[{"url":"https://pub.dev","token":"${{ secrets.PUB_CREDENTIALS }}"}]}' > ~/.config/dart/pub-tokens.json
+        env:
+          PUB_HOSTED_URL: https://pub.dev
+      
+      - name: Publish to pub.dev
+        run: flutter pub publish --force
+        env:
+          PUB_HOSTED_URL: https://pub.dev
